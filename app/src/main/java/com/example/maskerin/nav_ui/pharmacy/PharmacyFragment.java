@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,8 @@ import com.example.maskerin.R;
 public class PharmacyFragment extends Fragment {
 
     private PharmacyViewModel dashboardViewModel;
+    public Button button = null;
+    Intent intent;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,12 +37,16 @@ public class PharmacyFragment extends Fragment {
                 textView.setText(s);
             }
         });
-        return root;
-    }
 
-    public void seeMapsOnClick(View v){
-        Intent intent = new Intent(getActivity(), MapsActivity.class);
-        startActivity(intent);
+        intent = new Intent(getActivity(), MapsActivity.class);
+        button = (Button) root.findViewById(R.id.bt_see_maps);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
+
+        return root;
     }
 
 //    public void onCreate(@Nullable Bundle savedInstanceState){
@@ -47,11 +54,11 @@ public class PharmacyFragment extends Fragment {
 //        super.onCreate(savedInstanceState);
 //    }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.appbar_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        inflater.inflate(R.menu.appbar_menu, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
 
 //    @Override
 //    public boolean onOptionsItemSelected(@NonNull MenuItem item) {

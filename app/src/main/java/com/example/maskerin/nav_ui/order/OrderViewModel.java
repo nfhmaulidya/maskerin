@@ -10,7 +10,7 @@ public class OrderViewModel extends ViewModel {
 
     public OrderViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is order fragment");
     }
 
     public LiveData<String> getText() {
