@@ -17,9 +17,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maskerin.LoginActivity;
 import com.example.maskerin.MapsActivity;
+import com.example.maskerin.MyAdapter;
 import com.example.maskerin.R;
 
 public class PharmacyFragment extends Fragment {
@@ -27,6 +30,9 @@ public class PharmacyFragment extends Fragment {
     private PharmacyViewModel dashboardViewModel;
     public Button button = null;
     Intent intent;
+
+    RecyclerView recyclerView;
+    String name[], distance[], address[], stock[], date[], time[], phone[];
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class PharmacyFragment extends Fragment {
             }
         });
 
+        //button onclick listener
         intent = new Intent(getActivity(), MapsActivity.class);
         button = (Button) root.findViewById(R.id.bt_see_maps);
         button.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +55,24 @@ public class PharmacyFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //reciclerview
+        recyclerView = root.findViewById(R.id.rv_list_of_pharmacy);
+
+        //setting datas
+        name = getResources().getStringArray(R.array.pharmacy_name);
+        distance = getResources().getStringArray(R.array.pharmacy_distance);
+        address = getResources().getStringArray(R.array.pharmacy_address);
+        stock = getResources().getStringArray(R.array.pharmacy_stock);
+        date = getResources().getStringArray(R.array.pharmacy_date);
+        time = getResources().getStringArray(R.array.pharmacy_time);
+        phone = getResources().getStringArray(R.array.pharmacy_phone);
+
+        //creating object adapter
+        MyAdapter myAdapter = new MyAdapter(getActivity(), name, distance, address, stock, date,
+                time, phone);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return root;
     }
