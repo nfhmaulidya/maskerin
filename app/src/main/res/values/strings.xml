@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">maskerin</string>
+    <string name="attribute_nama">Nama</string>
     <string name="attribute_nik">NIK</string>
     <string name="attribute_email">Email</string>
     <string name="attribute_password">Password</string>
@@ -73,4 +74,6 @@
         <item>085123456789</item>
         <item>085123456789</item>
     </string-array>
+
+    <string name="minimum_password">Masukkan minimal 6 karakter</string>
 </resources>
