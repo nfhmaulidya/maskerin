@@ -8,72 +8,9 @@
     <string name="action_login">Masuk</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_pharmacy">Apotek</string>
-    <string name="title_order">Daftar Pesanan</string>
+    <string name="title_history">Histori Pemesanan</string>
     <string name="title_profile">Profil</string>
     <string name="title_activity_maps">Map</string>
-
-    <string-array name="pharmacy_name">
-        <item>Apotek Sehat</item>
-        <item>Apotek Jaya Sentosa</item>
-        <item>Apotek Abadi Abada</item>
-        <item>Apotek Mawar Melati Semuanya Indah</item>
-        <item>Apotek Lihat Kebunku</item>
-        <item>Apotek Senyum Nyaman</item>
-    </string-array>
-
-    <string-array name="pharmacy_distance">
-        <item>845m</item>
-        <item>75m</item>
-        <item>1025m</item>
-        <item>327m</item>
-        <item>2649m</item>
-        <item>1963m</item>
-    </string-array>
-
-    <string-array name="pharmacy_address">
-        <item>Jl. Sehat selalu setiap hari tanpa ada halangan</item>
-        <item>Jl. Jaya sentosa sepanjang masa</item>
-        <item>Jl. Abadi selamanya</item>
-        <item>Jl. Mawar adalah nama bunga yang wanginya kebangetan wes pokok</item>
-        <item>Jl. Lihat Kebunku penuh dengan bunga</item>
-        <item>Jl. Senyum nyaman senyaman kasur pas lagi capek-capeknya</item>
-    </string-array>
-
-    <string-array name="pharmacy_stock">
-        <item>Sisa 50</item>
-        <item>Habis</item>
-        <item>Sisa 100</item>
-        <item>Sisa 100</item>
-        <item>Sisa 50</item>
-        <item>Habis</item>
-    </string-array>
-    
-    <string-array name="pharmacy_date">
-        <item>02-05-20</item>
-        <item>01-05-20</item>
-        <item>05-05-20</item>
-        <item>02-05-20</item>
-        <item>01-05-20</item>
-        <item>05-05-20</item>
-    </string-array>
-
-    <string-array name="pharmacy_time">
-        <item>15:00</item>
-        <item>23:00</item>
-        <item>13:00</item>
-        <item>03:00</item>
-        <item>09:00</item>
-        <item>10:00</item>
-    </string-array>
-
-    <string-array name="pharmacy_phone">
-        <item>085123456789</item>
-        <item>085123456789</item>
-        <item>085123456789</item>
-        <item>085123456789</item>
-        <item>085123456789</item>
-        <item>085123456789</item>
-    </string-array>
-
     <string name="minimum_password">Masukkan minimal 6 karakter</string>
+
 </resources>

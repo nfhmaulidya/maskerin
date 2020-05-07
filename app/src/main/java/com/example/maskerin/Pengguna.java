@@ -12,16 +12,4 @@ public class Pengguna {
         this.nama = nama;
         this.nik=nik;
     }
-
-    public String getUserName() {
-        return nama;
-    }
-    public String getUserNIK() {
-        return nik;
-    }
-    public String getUserEmail() {
-        return email;
-    }
-
-
 }
