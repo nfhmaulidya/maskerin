@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".nav_ui.pharmacy.PharmacyFragment"
-    android:paddingBottom="56dp">
+    tools:context=".nav_ui.history.HistoryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/bt_see_maps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lihat Peta" />
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_of_pharmacy"
+            android:id="@+id/rv_order_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"/>
 
         <TextView
-            android:id="@+id/tv_pharmacy"
+            android:id="@+id/tv_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/title_pharmacy" />
+            android:text="@string/title_history" />
     </LinearLayout>
 
 </ScrollView>
