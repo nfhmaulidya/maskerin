@@ -8,10 +8,10 @@
     <string name="action_login">Masuk</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_pharmacy">Apotek</string>
-    <string name="title_order">Daftar Pesanan</string>
-    <string name="title_profile">Profile Anda</string>
+
+    <string name="title_history">Histori Pemesanan</string>
+    <string name="title_profile">Profil</string>
     <string name="title_activity_maps">Map</string>
     <string name="minimum_password">Masukkan minimal 6 karakter</string>
-
 
 </resources>
