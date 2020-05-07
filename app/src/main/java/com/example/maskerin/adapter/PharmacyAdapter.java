@@ -1,4 +1,4 @@
-package com.example.maskerin;
+package com.example.maskerin.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,45 +9,43 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+import com.example.maskerin.R;
+import com.example.maskerin.class_object.Pharmacy;
 
-    String name[], distance[], address[], stock[], date[], time[], phone[];
-    Context context;
+import java.util.ArrayList;
 
-    public MyAdapter(Context context, String[] name, String[] distance, String[] address,
-                     String[] stock, String[] date, String[] time, String[] phone){
-        this.context = context;
-        this.name = name;
-        this.distance = distance;
-        this.address = address;
-        this.stock = stock;
-        this.date = date;
-        this.time = time;
-        this.phone = phone;
+public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MyViewHolder> {
+
+    LayoutInflater inflater;
+    ArrayList<Pharmacy> pharmacies;
+
+    public PharmacyAdapter(Context context, ArrayList<Pharmacy> pharmacies){
+        this.inflater = LayoutInflater.from(context);
+        this.pharmacies = pharmacies;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.row_pharmacy, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(this.name[position]);
-        holder.distance.setText(this.distance[position]);
-        holder.address.setText(this.address[position]);
-        holder.stock.setText(this.stock[position]);
-        holder.date.setText(this.date[position]);
-        holder.time.setText(this.time[position]);
-        holder.phone.setText(this.phone[position]);
+        final Pharmacy current = pharmacies.get(position);
+        holder.name.setText(current.name);
+        holder.distance.setText(current.distance);
+        holder.address.setText(current.address);
+        holder.stock.setText(current.stock);
+        holder.date.setText(current.dateUpdate);
+        holder.time.setText(current.timeUpdate);
+        holder.phone.setText(current.phone);
     }
 
     @Override
     public int getItemCount() {
-        return this.name.length;
+        return this.pharmacies.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
