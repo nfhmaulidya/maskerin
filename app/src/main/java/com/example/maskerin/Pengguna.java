@@ -13,15 +13,18 @@ public class Pengguna {
         this.nik=nik;
     }
 
-    public String getUserName() {
+
+
+    public String getNama() {
         return nama;
     }
-    public String getUserNIK() {
-        return nik;
-    }
-    public String getUserEmail() {
+
+    public String getEmail() {
         return email;
     }
 
+    public String getNik() {
+        return nik;
+    }
 
 }
