@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="48dp"
 
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="144dp"
         android:hint="@string/attribute_nama"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.677"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,21 +74,40 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
 
-        android:text="Masuk"
+        android:fontFamily="sans-serif-black"
         android:onClick="LoginOnClick"
-        app:layout_constraintTop_toBottomOf="@id/et_password"
-        app:layout_constraintStart_toEndOf="@id/tv_dont_have_account"/>
+        android:shadowColor="#3F51B5"
+        android:text="Masuk"
+        android:textColor="#3F51B5"
+        app:layout_constraintStart_toEndOf="@id/tv_dont_have_account"
+        app:layout_constraintTop_toBottomOf="@id/et_password" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="314dp"
+        android:layout_height="50dp"
 
-        android:text="@string/action_registration"
+        android:background="#2196F3"
         android:onClick="RegisterOnClick"
+        android:text="@string/action_registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_password"
         app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="319dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="DAFTAR MASKERIN"
+        android:textColor="#3F51B5"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
