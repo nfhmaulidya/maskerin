@@ -8,11 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -30,11 +32,13 @@ import java.util.ArrayList;
 public class PharmacyFragment extends Fragment {
 
     private PharmacyViewModel pharmacyViewModel;
-    public Button button = null;
+    //NestedScrollView scrollView;
+    public Button button;
     Intent intent;
     View root;
 
     RecyclerView recyclerView;
+    boolean check_ScrollingUp = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +62,10 @@ public class PharmacyFragment extends Fragment {
             }
         });
 
+        //nestedScrollView = root.findViewById(R.id.nested_scroll_view);
+
         init();
+        scrollListener();
         return root;
     }
 
@@ -74,8 +81,14 @@ public class PharmacyFragment extends Fragment {
                 "Sisa > 100", "02-05-20", "03:00", "085123456789"));
         pharmacies.add(new Pharmacy("Apotek Lihat Kebunku", "2649m", "Jl. Lihat Kebunku penuh dengan bunga",
                 "Sisa < 50", "01-05-20", "09:00", "085123456789"));
+        pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
+                "Habis", "07-05-20", "05:00", "085123456789"));
         pharmacies.add(new Pharmacy("Apotek Senyum Nyaman", "1963m", "Jl. Senyum nyaman senyaman kasur pas lagi capek-capeknya",
                 "Habis", "05-05-20", "10:00", "085123456789"));
+        pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
+                "Habis", "07-05-20", "05:00", "085123456789"));
+        pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
+                "Habis", "07-05-20", "05:00", "085123456789"));
         pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
                 "Habis", "07-05-20", "05:00", "085123456789"));
 
@@ -83,6 +96,51 @@ public class PharmacyFragment extends Fragment {
         PharmacyAdapter myAdapter = new PharmacyAdapter(getActivity(), pharmacies);
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    public void scrollListener(){
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0){
+                    if(check_ScrollingUp){
+                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_downwards));
+                        check_ScrollingUp = false;
+                    }
+                } else {
+                    if(!check_ScrollingUp){
+                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_upwards));
+                        check_ScrollingUp = true;
+                    }
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+//        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+//
+//            @Override
+//            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                if (scrollY > oldScrollY) {
+//                    if (check_ScrollingUp) {
+//                        //button.setVisibility(View.GONE);
+//                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_downwards));
+//                        check_ScrollingUp = false;
+//                    }
+//                } else {
+//                    if (!check_ScrollingUp) {
+//                        //button.setVisibility(View.VISIBLE);
+//                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_upwards));
+//                        check_ScrollingUp = true;
+//                    }
+//                }
+//            }
+//        });
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState){
@@ -107,4 +165,6 @@ public class PharmacyFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

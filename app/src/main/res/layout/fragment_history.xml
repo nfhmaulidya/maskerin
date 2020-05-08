@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".nav_ui.history.HistoryFragment">
+    tools:context=".nav_ui.history.HistoryFragment"
+    android:paddingBottom="56dp">
 
     <LinearLayout
         android:layout_width="match_parent"
