@@ -58,24 +58,6 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (password.length() < 6) {
             Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
         } else {
-            //create user
-            /*.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            Toast.makeText(RegisterActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
-                            // If sign in fails, display a message to the user. If sign in succeeds
-                            // the auth state listener will be notified and logic to handle the
-                            // signed in user can be handled in the listener.
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
-                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                                finish();
-                            }
-                        }
-                    });*/
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -99,8 +81,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             Log.d("daftar", "createUserWithEmail:success");
                                             FirebaseUser user = mAuth.getCurrentUser();
-
                                             updateUI(user);
+
                                         } else {
                                             Log.w("daftar", "createUserWithEmail:failure", task.getException());
                                             Toast.makeText(RegisterActivity.this, "Authentication failed.",
