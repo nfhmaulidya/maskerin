@@ -10,37 +10,58 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.maskerin.LoginActivity;
 import com.example.maskerin.MapsActivity;
+import com.example.maskerin.adapter.PharmacyAdapter;
 import com.example.maskerin.R;
+import com.example.maskerin.class_object.Pharmacy;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class PharmacyFragment extends Fragment {
 
-    private PharmacyViewModel dashboardViewModel;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private DatabaseReference databaseReference;
+    private ArrayList<Pharmacy> dataApotik;
+    private Button pesan ;
+    private FirebaseDatabase auth;
+
+
+    private PharmacyViewModel pharmacyViewModel;
     public Button button = null;
     Intent intent;
+    View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
+        pharmacyViewModel =
                 ViewModelProviders.of(this).get(PharmacyViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_pharmacy, container, false);
+        root = inflater.inflate(R.layout.fragment_pharmacy, container, false);
         final TextView textView = root.findViewById(R.id.tv_pharmacy);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        pharmacyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
 
+        //button onclick listener
         intent = new Intent(getActivity(), MapsActivity.class);
         button = (Button) root.findViewById(R.id.bt_see_maps);
         button.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +70,41 @@ public class PharmacyFragment extends Fragment {
             }
         });
 
+        GetData();
         return root;
+    }
+
+    private void GetData(){
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Apotik").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dataApotik = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //Mapping data pada DataSnapshot ke dalam objek mahasiswa
+                    Pharmacy apotik = snapshot.getValue(Pharmacy.class);
+                    //Mengambil Primary Key, digunakan untuk proses Update dan Delete
+                    apotik.setKey(dataSnapshot.getKey());
+                    dataApotik.add(apotik);
+
+
+                }
+                recyclerView = root.findViewById(R.id.rv_list_of_pharmacy);
+                adapter = new PharmacyAdapter(dataApotik, getActivity());
+                //Memasang Adapter pada RecyclerView
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState){
