@@ -27,9 +27,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<<<<<<< HEAD
-    </LinearLayout>
-=======
     <TextView
         android:id="@+id/tv_pharmacy"
         android:layout_width="wrap_content"
@@ -39,6 +36,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_list_of_pharmacy" />
->>>>>>> upstream/master
 
 </androidx.constraintlayout.widget.ConstraintLayout>
