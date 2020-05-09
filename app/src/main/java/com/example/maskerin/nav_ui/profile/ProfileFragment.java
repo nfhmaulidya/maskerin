@@ -20,10 +20,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.maskerin.LoginActivity;
-import com.example.maskerin.MainActivity;
 import com.example.maskerin.Pengguna;
 import com.example.maskerin.R;
-import com.example.maskerin.RegisterActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
 
+    private EditText editText;
+    private String saveText;
     private ProfileViewModel notificationsViewModel;
     private DatabaseReference databaseReference;
     private TextView tvnama,tvemail,tvnik;
@@ -43,9 +43,6 @@ public class ProfileFragment extends Fragment {
     private ImageView btnEditNama,btnEditEmail,btnEditPassword;
     private String GetUserID;
 
-
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -53,6 +50,7 @@ public class ProfileFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
         final TextView textView = root.findViewById(R.id.tv_profile);
 
+        editText = root.findViewById(R.id.et_cobaaja);
 
         tvnama=root.findViewById(R.id.tvNama);
         tvnik=root.findViewById(R.id.tvNik);
@@ -77,6 +75,8 @@ public class ProfileFragment extends Fragment {
                 tvnik.setText(userProfile.getNik());
                 tvnama.setText(userProfile.getNama());
 
+                saveText = userProfile.getEmail();
+                editText.setText(userProfile.getEmail());
             }
             @Override
             public void onCancelled( DatabaseError databaseError) {
@@ -207,5 +207,9 @@ public class ProfileFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    public void changeText(){
+
     }
 }

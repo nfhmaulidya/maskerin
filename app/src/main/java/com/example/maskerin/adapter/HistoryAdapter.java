@@ -1,7 +1,6 @@
 package com.example.maskerin.adapter;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.maskerin.OrderInfoActivity;
 import com.example.maskerin.R;
 import com.example.maskerin.class_object.History;
-import com.example.maskerin.class_object.Order;
 
 import java.util.ArrayList;
 
