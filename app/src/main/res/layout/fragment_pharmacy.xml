@@ -11,7 +11,7 @@
     <Button
         android:id="@+id/bt_see_maps"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="Lihat Peta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
