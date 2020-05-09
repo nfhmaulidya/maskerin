@@ -26,10 +26,24 @@ import com.example.maskerin.MapsActivity;
 import com.example.maskerin.adapter.PharmacyAdapter;
 import com.example.maskerin.R;
 import com.example.maskerin.class_object.Pharmacy;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class PharmacyFragment extends Fragment {
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private DatabaseReference databaseReference;
+    private ArrayList<Pharmacy> dataApotik;
+    private Button pesan ;
+    private FirebaseDatabase auth;
+
 
     private PharmacyViewModel pharmacyViewModel;
     //NestedScrollView scrollView;
@@ -37,8 +51,9 @@ public class PharmacyFragment extends Fragment {
     Intent intent;
     View root;
 
-    RecyclerView recyclerView;
+
     boolean check_ScrollingUp = false;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -62,40 +77,45 @@ public class PharmacyFragment extends Fragment {
             }
         });
 
-        //nestedScrollView = root.findViewById(R.id.nested_scroll_view);
 
-        init();
+        GetData();
         scrollListener();
         return root;
     }
 
-    public void init(){
-        ArrayList<Pharmacy> pharmacies = new ArrayList<>();
-        pharmacies.add(new Pharmacy("Apotek Sehat", "845m", "Jl. Sehat selalu setiap hari tanpa ada halangan",
-                "Sisa < 50", "02-05-20", "15:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Jaya Sentosa", "75m", "Jl. Jaya sentosa sepanjang masa",
-                "Habis", "01-05-20", "23:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Abadi Abada", "1025m", "Jl. Abadi selamanya",
-                "Sisa > 100", "05-05-20", "13:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Mawar Melati Semuanya Indah", "327m", "Jl. Mawar adalah nama bunga yang wanginya kebangetan wes pokok",
-                "Sisa > 100", "02-05-20", "03:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Lihat Kebunku", "2649m", "Jl. Lihat Kebunku penuh dengan bunga",
-                "Sisa < 50", "01-05-20", "09:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
-                "Habis", "07-05-20", "05:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Senyum Nyaman", "1963m", "Jl. Senyum nyaman senyaman kasur pas lagi capek-capeknya",
-                "Habis", "05-05-20", "10:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
-                "Habis", "07-05-20", "05:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
-                "Habis", "07-05-20", "05:00", "085123456789"));
-        pharmacies.add(new Pharmacy("Apotek Darah Muda", "100m", "Jl. Darahnya Para Remaja Uo Uooooo",
-                "Habis", "07-05-20", "05:00", "085123456789"));
+    private void GetData(){
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Apotik").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dataApotik = new ArrayList<>();
 
-        recyclerView = root.findViewById(R.id.rv_list_of_pharmacy);
-        PharmacyAdapter myAdapter = new PharmacyAdapter(getActivity(), pharmacies);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    //Mapping data pada DataSnapshot ke dalam objek mahasiswa
+                    Pharmacy apotik = snapshot.getValue(Pharmacy.class);
+                    //Mengambil Primary Key, digunakan untuk proses Update dan Delete
+                    apotik.setKey(dataSnapshot.getKey());
+                    dataApotik.add(apotik);
+
+
+                }
+                recyclerView = root.findViewById(R.id.rv_list_of_pharmacy);
+                adapter = new PharmacyAdapter(dataApotik, getActivity());
+                //Memasang Adapter pada RecyclerView
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
     }
 
     public void scrollListener(){
@@ -122,25 +142,6 @@ public class PharmacyFragment extends Fragment {
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
-//        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-//
-//            @Override
-//            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-//                if (scrollY > oldScrollY) {
-//                    if (check_ScrollingUp) {
-//                        //button.setVisibility(View.GONE);
-//                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_downwards));
-//                        check_ScrollingUp = false;
-//                    }
-//                } else {
-//                    if (!check_ScrollingUp) {
-//                        //button.setVisibility(View.VISIBLE);
-//                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_upwards));
-//                        check_ScrollingUp = true;
-//                    }
-//                }
-//            }
-//        });
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState){

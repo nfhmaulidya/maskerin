@@ -86,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onInfoWindowClick(Marker arg0) {
                 // call an activity(xml file)
-                Intent I = new Intent(MapsActivity.this, Pemesanan.class);
+                Intent I = new Intent(MapsActivity.this, PemesananActivity.class);
                 startActivity(I);
             }
 
