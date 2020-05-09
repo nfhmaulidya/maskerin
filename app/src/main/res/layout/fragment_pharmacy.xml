@@ -23,12 +23,6 @@
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"/>
 
-        <TextView
-            android:id="@+id/tv_pharmacy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/title_pharmacy" />
     </LinearLayout>
 
 </ScrollView>
