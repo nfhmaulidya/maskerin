@@ -8,11 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -44,9 +46,14 @@ public class PharmacyFragment extends Fragment {
 
 
     private PharmacyViewModel pharmacyViewModel;
-    public Button button = null;
+    //NestedScrollView scrollView;
+    public Button button;
     Intent intent;
     View root;
+
+
+    boolean check_ScrollingUp = false;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +77,9 @@ public class PharmacyFragment extends Fragment {
             }
         });
 
+
         GetData();
+        scrollListener();
         return root;
     }
 
@@ -105,6 +114,34 @@ public class PharmacyFragment extends Fragment {
             }
         });
 
+
+
+    }
+
+    public void scrollListener(){
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0){
+                    if(check_ScrollingUp){
+                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_downwards));
+                        check_ScrollingUp = false;
+                    }
+                } else {
+                    if(!check_ScrollingUp){
+                        button.startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.trans_upwards));
+                        check_ScrollingUp = true;
+                    }
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState){
@@ -129,4 +166,6 @@ public class PharmacyFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

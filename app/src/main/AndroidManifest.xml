@@ -14,10 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrderInfoActivity"
+
+        <activity
+            android:name=".OrderInfoActivity"
             android:parentActivityName=".MainActivity"
-            android:label="Detail">
+            android:label="Detail Pemesanan">
         </activity>
+<<<<<<< HEAD
         <activity android:name=".PemesananActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -30,21 +33,37 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+=======
+
+        <activity
+            android:name=".Pemesanan" />
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="@string/google_maps_key" />
+>>>>>>> upstream/master
 
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
-                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/FullScreen">
         </activity>
-        <activity android:name=".RegisterActivity" />
+
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/FullScreen"/>
+
     </application>
 
 </manifest>
