@@ -44,16 +44,13 @@ public class PharmacyFragment extends Fragment {
     private Button pesan ;
     private FirebaseDatabase auth;
 
-
     private PharmacyViewModel pharmacyViewModel;
     //NestedScrollView scrollView;
     public Button button;
     Intent intent;
     View root;
 
-
     boolean check_ScrollingUp = false;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +74,7 @@ public class PharmacyFragment extends Fragment {
             }
         });
 
+        recyclerView = root.findViewById(R.id.rv_list_of_pharmacy);
 
         GetData();
         scrollListener();
@@ -96,26 +94,18 @@ public class PharmacyFragment extends Fragment {
                     //Mengambil Primary Key, digunakan untuk proses Update dan Delete
                     apotik.setKey(dataSnapshot.getKey());
                     dataApotik.add(apotik);
-
-
                 }
-                recyclerView = root.findViewById(R.id.rv_list_of_pharmacy);
+
                 adapter = new PharmacyAdapter(dataApotik, getActivity());
                 //Memasang Adapter pada RecyclerView
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
-
-
     }
 
     public void scrollListener(){
@@ -166,6 +156,4 @@ public class PharmacyFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }
