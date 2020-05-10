@@ -8,6 +8,7 @@ public class Pharmacy {
     public String nama, alamat, hari, jam;
     public int stock_dewasa, stock_anak, harga_dewasa, harga_anak;
     private String key;
+    public Double bujur,lintang;
 
 
     public Pharmacy() {
