@@ -31,13 +31,6 @@ public class HistoryFragment extends Fragment {
         historyViewModel =
                 ViewModelProviders.of(this).get(HistoryViewModel.class);
         root = inflater.inflate(R.layout.fragment_history, container, false);
-        final TextView textView = root.findViewById(R.id.tv_order);
-        historyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         init();
         return root;
     }

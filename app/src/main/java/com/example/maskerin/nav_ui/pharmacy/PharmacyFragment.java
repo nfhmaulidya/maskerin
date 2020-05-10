@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -38,15 +37,11 @@ public class PharmacyFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
     private DatabaseReference databaseReference;
     private ArrayList<Pharmacy> dataApotik;
-    private Button pesan ;
-    private FirebaseDatabase auth;
-
     private PharmacyViewModel pharmacyViewModel;
-    //NestedScrollView scrollView;
     public Button button;
+    public TextView loading;
     Intent intent;
     View root;
 
@@ -57,13 +52,6 @@ public class PharmacyFragment extends Fragment {
         pharmacyViewModel =
                 ViewModelProviders.of(this).get(PharmacyViewModel.class);
         root = inflater.inflate(R.layout.fragment_pharmacy, container, false);
-        final TextView textView = root.findViewById(R.id.tv_pharmacy);
-        pharmacyViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
         //button onclick listener
         intent = new Intent(getActivity(), MapsActivity.class);
@@ -75,6 +63,8 @@ public class PharmacyFragment extends Fragment {
         });
 
         recyclerView = root.findViewById(R.id.rv_list_of_pharmacy);
+        loading = root.findViewById(R.id.tv_loading);
+        loading.setVisibility(View.VISIBLE);
 
         GetData();
         scrollListener();
@@ -97,6 +87,7 @@ public class PharmacyFragment extends Fragment {
                 }
 
                 adapter = new PharmacyAdapter(dataApotik, getActivity());
+                loading.setVisibility(View.GONE);
                 //Memasang Adapter pada RecyclerView
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -141,7 +132,7 @@ public class PharmacyFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.appbar_menu, menu);
+        inflater.inflate(R.menu.appbar_menu_pharmacy, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

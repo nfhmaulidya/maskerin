@@ -64,7 +64,9 @@
     <View
         android:id="@+id/view"
         android:layout_width="fill_parent"
-        android:layout_height="0.2dp"
+        android:layout_height="1dp"
+        android:alpha="0.2"
+        android:layout_marginHorizontal="16dp"
         android:background="@color/grey"
         app:layout_constraintBottom_toBottomOf="@id/cv_order_history"
         app:layout_constraintEnd_toEndOf="parent"
