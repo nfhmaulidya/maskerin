@@ -19,8 +19,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
-    private TextView tvDaftar;
-    private Button buttonLogin;
     private FirebaseAuth mAuth;
 
     @Override

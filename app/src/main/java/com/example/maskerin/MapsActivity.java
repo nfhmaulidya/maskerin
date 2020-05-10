@@ -93,7 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (DataSnapshot s : dataSnapshot.getChildren()) {
                     Pharmacy user = s.getValue(Pharmacy.class);
                     LatLng location = new LatLng(user.bujur, user.lintang);
-                    mMap.addMarker(new MarkerOptions().position(location).title(user.name).snippet("Jam Buka Apotik : " + user.jam + "\n" + "Alamat : " + user.address + "\n" + "Sisa Masker anak : " + user.stock + "\n" + "Sisa Masker dewasa : " + user.stock));
+                    mMap.addMarker(new MarkerOptions().position(location).title(user.nama).snippet("Jam Buka Apotik : " + user.jam + "\n" + "Alamat : " + user.alamat + "\n" + "Sisa Masker anak : " + user.stock_anak + "\n" + "Sisa Masker dewasa : " + user.stock_dewasa));
                     mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
                         @Override
                         public View getInfoWindow(Marker arg0) {
