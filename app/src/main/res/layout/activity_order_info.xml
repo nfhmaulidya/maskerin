@@ -10,14 +10,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tv_pharmacy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
             android:text="Apotek Serba Guna"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -26,7 +25,6 @@
             android:id="@+id/tv_info_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="16dp"
             android:text="Jalan Suka Jaya Udah Pasti Suka Gitu Deh Seru Ga Si Alamatnya Hehe Hohoho Ulala"
             android:textSize="12sp" />
@@ -36,25 +34,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama"
-                android:textStyle="bold"/>
+                android:textSize="10sp"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tv_content_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="Mr. Bean" />
+                android:layout_marginTop="4dp"
+                android:text="Mr. Bean"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
             android:background="@color/grey"/>
 
 <!--        nik-->
@@ -62,25 +64,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NIK"
-                android:textStyle="bold"/>
+                android:textSize="10sp"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tv_content_nik"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="1234567890" />
+                android:layout_marginTop="4dp"
+                android:text="1234567890"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
             android:background="@color/grey"/>
 
 <!--        date-->
@@ -88,25 +94,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tanggal Pemesanan"
-                android:textStyle="bold"/>
+                android:textSize="10sp"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tv_content_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="01-05-20" />
+                android:layout_marginTop="4dp"
+                android:text="01-05-20"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
             android:background="@color/grey"/>
 
 <!--        type-->
@@ -114,25 +124,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jenis Masekr"
-                android:textStyle="bold"/>
+                android:textSize="10sp"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tv_content_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="Dewasa" />
+                android:layout_marginTop="4dp"
+                android:text="Dewasa"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
             android:background="@color/grey"/>
 
 <!--        total item-->
@@ -140,25 +154,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jumlah Item yang Dibeli"
-                android:textStyle="bold"/>
+                android:textSize="10sp"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tv_content_total_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="1000 buah" />
+                android:layout_marginTop="4dp"
+                android:text="1000 buah"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
             android:background="@color/grey"/>
 
 <!--        prize-->
@@ -166,25 +184,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Harga Satuan"
-                android:textStyle="bold"/>
+                android:textSize="10sp"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tv_content_prize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="Rp. 100000" />
+                android:layout_marginTop="4dp"
+                android:text="Rp. 100000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
             android:background="@color/grey"/>
 
 <!--        total prize-->
@@ -192,25 +214,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingVertical="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total"
-                android:textStyle="bold"/>
+                android:textSize="10sp"
+                android:textAllCaps="true" />
 
             <TextView
                 android:id="@+id/tv_content_total_prize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="Rp. 100000000" />
+                android:layout_marginTop="4dp"
+                android:text="Rp. 100000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
             android:background="@color/grey"/>
 
         <TextView

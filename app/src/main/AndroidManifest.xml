@@ -15,16 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".OrderInfoActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="Detail Pemesanan">
+        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
+        <activity android:name=".EditProfileActivity"
+            android:label="Edit Profile">
+        </activity>
+
+        <activity
+            android:name=".OrderInfoActivity"
+            android:label="Detail Pemesanan"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".PemesananActivity" />
-            <meta-data
-                android:name="com.google.android.geo.API_KEY"
-                android:value="@string/google_maps_key" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MapsActivity"
@@ -38,16 +48,11 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/FullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/FullScreen"/>
-
+            android:theme="@style/FullScreen" />
     </application>
 
 </manifest>
